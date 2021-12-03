@@ -1,0 +1,19 @@
+#!/usr/bin/env python3
+
+aim = 0
+depth = 0
+horiz = 0
+position = 0
+
+with open("puzzleinput") as file:
+    for element in file.readlines():
+        if element.startswith('for') == True:
+            horiz += (int(element[-2]))
+            if aim > 0:
+                depth = depth + (aim * (int(element[-2])))
+        if element.startswith('do') == True:
+            aim = (int(element[-2])) + aim
+        if element.startswith('u') == True:
+            aim = aim - (int(element[-2]))
+position = depth * horiz
+print(position)
