@@ -24,3 +24,4 @@ def Bingo(string):
 
 #print(Convert(bingoselection))
 print(Bingo(bingopuzzle[3]))
+#try this: https://stackoverflow.com/questions/15963959/reading-a-line-of-integers-in-python
