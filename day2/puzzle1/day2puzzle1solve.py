@@ -4,7 +4,7 @@ depth = 0
 horiz = 0
 position = 0
 
-with open("puzzleinput") as file:
+with open("day2/puzzle1/puzzleinput") as file:
     for element in file.readlines():
         if element.startswith('for') == True:
             horiz += (int(element[-2]))
