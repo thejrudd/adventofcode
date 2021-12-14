@@ -2,33 +2,74 @@
 
 from itertools import islice
 
+puzzlenumber = []
 bingopuzzle = []
 puzzlerow = []
 puzzlevalue = []
 
-#Derives number of total puzzles available
+# Reads in selection of bingo numbers from first line
 with open("puzzleinput") as file:
     bingoselection = file.readlines()[0].rstrip()
 
+#Reads in a line of puzzle input into a list called "puzzlerow"
+#and adds it to list "bingopuzzle"
 with open("puzzleinput") as file:
     for line in islice(file, 2, None):
         puzzlerow = line.split()
+        bingopuzzle.append(puzzlerow)
+
+#Removes blank lines read into bingpuzzle in above statement ^
+del bingopuzzle[5::6]
+
+#for item in bingopuzzle:
+    #print(item)
+
+#print(bingopuzzle)
 
 with open ("puzzleinput") as file:
     for line in file:
 #        number_of_puzzles = (len(file.readlines() - 2)/5)
          puzzlelength = len(file.readlines())
 
+bingoselection = bingoselection.split(",")
 print(puzzlelength)
 numberofpuzzles = int((puzzlelength) / 6)
 print(numberofpuzzles)
 
-with open ("puzzleinput") as file:
-    for puzzle in range(numberofpuzzles):
-        print(puzzle)
-        for i in file:
+print(len(bingoselection))
+
+print(puzzlenumber)
+
+#Creates list that has the exact number of values as the number of solvable puzzles in the input
+for i in range(numberofpuzzles):
+    puzzlenumber.append(i)
+
+#print(puzzlenumber)
+
+count1 = 0
+count2 = 1
+count3 = 2
+count4 = 3
+count5 = 4
+
+
+puzzlenumber[0].append
+
+print(puzzlenumber)
+
+#print(puzzlenumber)
+#for line in numberofpuzzles:
+ #   puzzlenumber 
+#with open ("puzzleinput") as file:
+    #for puzzle in range(numberofpuzzles):
+     #   print(puzzle)
+        #for i in file:
             #print(i)
-            for row in range(5):
+            #for row in range(5):
                 #print(row)
 
 #print(puzzlerow)
+
+### Currently, bingopuzzle is a list of every row, which is a list of every line entry
+### puzzlenumber is a list of 0-100. Stuck trying to create list of list of list going
+### puzzlenumber 1 -> row number 3 -> item number x. 
