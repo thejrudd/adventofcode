@@ -1,0 +1,52 @@
+#!/usr/bin/python3
+
+from itertools import islice
+
+puzzlenumber = []
+bingopuzzle = []
+puzzlerow = []
+puzzlevalue = []
+
+# Reads in selection of bingo numbers from first line
+with open("puzzleinput") as file:
+    bingoselection = file.readlines()[0].rstrip()
+
+#Reads in a line of puzzle input into a list called "puzzlerow"
+#and adds it to list "bingopuzzle"
+with open("puzzleinput") as file:
+    for line in islice(file, 2, None):
+        puzzlerow = line.split()
+        bingopuzzle.append(puzzlerow)
+
+#Removes blank lines read into bingopuzzle in above statement ^
+del bingopuzzle[5::6]
+
+#Sets puzzle length to length of file "puzzleinput"
+with open ("puzzleinput") as file:
+    for line in file:
+         puzzlelength = len(file.readlines())
+#Sets bingo callout numbers as a list named "bingoselection"
+bingoselection = bingoselection.split(",")
+
+#Sets numberofpuzzles as a value derived from the number of total lines in the file
+numberofpuzzles = int((puzzlelength) / 6)
+
+
+count1 = 0
+count2 = 1
+count3 = 2
+count4 = 3
+count5 = 4
+
+#Creates list of puzzle numbers derived from the number of puzzles solved above.
+puzzlenumber = list(range(0, numberofpuzzles))
+
+#Creates list of puzzle numbers 1-100, with each puzzle having a list of 5 lines,
+#with each line having a list of 5 items (columns).
+for line in puzzlenumber:
+    puzzlenumber[line] = bingopuzzle[count1], bingopuzzle[count2], bingopuzzle[count3], bingopuzzle[count4], bingopuzzle[count5]
+    count1 += 5
+    count2 += 5
+    count3 += 5
+    count4 += 5
+    count5 += 5
