@@ -1,0 +1,40 @@
+import re
+
+overlap = 0
+total = 0
+
+# Opens puzzle input file and reads through it line by line until the file finishes.
+with open('/Users/justinruddick/Documents/GitHub/adventofcode/2022/Day 4/puzzleinput.txt', 'r') as file:
+    lines = file.readlines()
+    for line in lines:
+        # Removes the "new line" character from the end of each line, then splits the line by each special character in the puzzle input.
+        line = line.strip()
+        valuelist = re.split("-|,|\+", line)
+        # Initializes a range based on the values of each of the sections of the puzzle input.
+        range1 = range(int(valuelist[0]),int(valuelist[1]),1)
+        range2 = range(int(valuelist[2]),int(valuelist[3]),1)
+        # Sets minimum and maximum values for each range. Adds +1 to each of the maximum values to account for the range needing an extra value.
+        if int(valuelist[0]) != int(valuelist[1]):
+            range1_low = min(range1)
+            range1_high = max(range1) +1
+        # If the values are the same in each range, set the valuelist variable to the first value in the list.
+        else:
+            range1_low = (valuelist[0])
+            range1_high = (valuelist[0]) 
+
+        if int(valuelist[2]) != int(valuelist[3]):
+            range2_low = min(range2)
+            range2_high = max(range2) +1 
+        else:
+            range2_low = (valuelist[2])
+            range2_high = (valuelist[2])
+        # Logic to check if one of the ranges is fully included in the other range.
+        if int(range1_low) <= int(range2_low) and int(range1_high) >= int(range2_high):
+            total += 1 
+        elif int(range2_low) <= int(range1_low) and int(range2_high) >= int(range1_high):         
+            total += 1
+print(total)
+            
+            
+        
+
