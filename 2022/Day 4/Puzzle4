@@ -34,7 +34,3 @@ with open('/Users/justinruddick/Documents/GitHub/adventofcode/2022/Day 4/puzzlei
         elif int(range2_low) <= int(range1_low) and int(range2_high) >= int(range1_high):         
             total += 1
 print(total)
-            
-            
-        
-
