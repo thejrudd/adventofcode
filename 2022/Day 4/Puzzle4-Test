@@ -1,0 +1,35 @@
+import re
+
+overlap = 0
+total = 0
+
+# Opens puzzle input file and reads through it line by line until the file finishes.
+with open('/Users/justinruddick/Documents/GitHub/adventofcode/2022/Day 4/puzzleinput.txt', 'r') as file:
+    lines = file.readlines()
+    for line in lines:
+        # Removes the "new line" character from the end of each line, finds the length of each line, then creates a string for each half of each line.
+        line = line.strip()
+        valuelist = re.split("-|,|\+", line)
+        range1 = range(int(valuelist[0]),int(valuelist[1]),1)
+        range2 = range(int(valuelist[2]),int(valuelist[3]),1)
+        print(range1)
+        print(range2)
+        range1_low = min(range1)
+        range1_high = max(range1)
+        range2_low = min(range2)
+        range2_high = max(range2)
+        if range2_low >= range1_low and range2_high <= range1_high:
+            print("The second range is entirely contained within the first range.")
+        else:
+            print("The second range is not entirely contained within the first range.")
+        # total += 1
+        # if int(valuelist[0]) <= int(valuelist[2]):
+        #     if int(valuelist[1]) >= int(valuelist[3]):
+        #     #  print(valuelist[0] + " " + valuelist[2])
+        #     # print(valuelist[1] + " " + valuelist[3])
+        #         total += 1
+    print(total)
+            
+            
+        
+
