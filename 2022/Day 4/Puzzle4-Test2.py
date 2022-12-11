@@ -11,11 +11,11 @@ with open('/Users/justinruddick/Documents/GitHub/adventofcode/2022/Day 4/puzzlei
         line = line.strip()
         valuelist = re.split("-|,|\+", line)
         if int(valuelist[0]) >= int(valuelist[2]):
-            if int(valuelist[1]) < int(valuelist[3]):
+            if int(valuelist[1]) <= int(valuelist[3]):
                 total += 1
         else:
             if int(valuelist[0]) <= int(valuelist[2]):
-                if int(valuelist[1]) > int(valuelist[3]):
+                if int(valuelist[1]) >= int(valuelist[3]):
                 #  print(valuelist[0] + " " + valuelist[2])
                 # print(valuelist[1] + " " + valuelist[3])
                     total += 1
