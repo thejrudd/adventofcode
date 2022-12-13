@@ -1,0 +1,20 @@
+# Initializes 'int' variable with an integer value of 3 to prevent underflow errors during the logic in the script.
+int = 3
+# Opens puzzle input file and reads through it line by line until the file finishes.
+with open(r'C:\Users\jruddick\Documents\GitHub\adventofcode\2022\Day 6\puzzleinput.txt', 'r') as file:
+    line = file.readline()
+    list = list(line)
+
+    for i in range(len(list)-int):
+        # "She may not look like much, but she's got it where it counts, kid. I've made a lot of special modifications myself."
+        # Literally brute forces whether any of the preceding list items match with the current list item in a single line. There's definitely a smarter way to do this but I am not smart enough to know what it is yet.
+        if list[int] != list[int-1] and list[int] != list[int-2] and list[int] != list[int-3] and list[int] != list[int-4] and list[int-1] != list[int-2] and list[int-1] != list[int-3] and list[int-1] != list[int-4] and list[int-2] != list[int-3] and list[int-2] != list[int-4] and list[int-3] != list[int-4]:
+            # Exits the loop if a match is detected.
+            break
+        # Loop continues and interates 1 index up through the list each time it runs.
+        int += 1
+    print(int)
+        
+           
+                
+        
