@@ -1,0 +1,6 @@
+# Opens puzzle input file and reads through it line by line until the file finishes.
+with open('C:\\Users\\jruddick\Documents\\GitHub\\adventofcode\\2022\\Day 7\\puzzleinput.txt', 'r') as file:
+    line = file.readlines()
+    for item in line:
+        if item.startswith('$'):
+            print(item)        
