@@ -1,6 +1,31 @@
+# Tried going down the route of creating classes with methods for each of the file objects. Idk what the hell I'm doing. Scrapping this and going to check out some tutorials and see what I can learn.
+
+
 # Opens puzzle input file and reads through it line by line until the file finishes.
-with open('C:\\Users\\jruddick\Documents\\GitHub\\adventofcode\\2022\\Day 7\\puzzleinput.txt', 'r') as file:
-    line = file.readlines()
-    for item in line:
-        if item.startswith('$'):
-            print(item)        
+
+class ElfFile:
+    def __init__(self, fileName, fileSize, childFiles):
+        self.fileName = fileName
+        self.fileSize = fileSize
+        self.childFiles = []
+    
+    def add_item(self, item):
+        self.childFiles.append(item)
+
+file = ElfFile("b.txt", 14848514, "f")
+
+my_list = ['item1', 'item2', 'item3']
+
+for item in my_list:
+    file.add_item(item)
+
+print(file.childFiles)
+
+# with open('/Users/justinruddick/Documents/GitHub/adventofcode/2022/Day 7/puzzleinput.txt', 'r') as file:
+#     line = file.readlines()
+#     for item in line:
+#         item = item.strip()
+#         if item.startswith('dir'):
+#             dir_list.append(item)
+
+#     print(dir_list)      
