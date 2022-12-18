@@ -1,0 +1,8 @@
+with open('/Users/justinruddick/Documents/GitHub/adventofcode/2022/Day 8/puzzleinput.txt', 'r') as file:
+    lines = [line.strip() for line in file.readlines()]
+    for value in lines:
+        print(value)
+        for height in value:
+            print(value[0])
+            
+

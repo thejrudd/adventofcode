@@ -1,31 +1,46 @@
-# Tried going down the route of creating classes with methods for each of the file objects. Idk what the hell I'm doing. Scrapping this and going to check out some tutorials and see what I can learn.
+# Had to go to YouTube to even start untangling this one. https://www.youtube.com/watch?v=FXQWIWHaFBE&t=478s
+# There were a couple of commands I wasn't aware of that would have helped immensely. I also struggled with breaking down the problem into smaller chunks. 
+# Conceptually, this was a tough puzzle to get my head around, specifically regarding having to update the total size of the directories that contain other directories.
+# I could just not crystallize a solution to that in my head. I cleary need more work on how to implement dictionaries in my code, as that was of high importance
+# in this solution, and I just could not figure out how to make them work by myself.
 
+with open('/Users/justinruddick/Documents/GitHub/adventofcode/2022/Day 7/puzzleinput.txt', 'r') as file:
+    commands = [command.strip() for command in file.readlines()]
 
-# Opens puzzle input file and reads through it line by line until the file finishes.
+# Need variables that keep track of which directory we're in and the size of the directory.
 
-class ElfFile:
-    def __init__(self, fileName, fileSize, childFiles):
-        self.fileName = fileName
-        self.fileSize = fileSize
-        self.childFiles = []
-    
-    def add_item(self, item):
-        self.childFiles.append(item)
+path = "/home"
+dir_name = ""
+dirs = {"/home":0}
 
-file = ElfFile("b.txt", 14848514, "f")
+for command in commands:
+    if command[0] == "$":
+        if command[2:4] == "ls":
+            pass
+        elif command[2:4] == "cd":
+            if command[5:6] == "/":
+                path = "/home"
+            elif command[5:7] == "..":
+                #rfind finds the last occurance of a character
+                path = path[:path.rfind("/")]
+            else:
+                dir_name = command[5:]
+                path = path + "/" + dir_name
+                dirs.update({path:0})
+    elif command[0:3] == "dir":
+        pass
+    else:
+        size = int(command[:command.find(" ")]) # Gets the size of the file by reading from the beginning until the first space in the line.
+        dir = path
+        for i in range(path.count("/")):
+            dirs[dir] += size
+            dir = dir[:dir.rfind("/")] 
 
-my_list = ['item1', 'item2', 'item3']
+total = 0
 
-for item in my_list:
-    file.add_item(item)
+for dir in dirs:
+    if dirs[dir] <= 100000:
+        total += dirs[dir]
 
-print(file.childFiles)
-
-# with open('/Users/justinruddick/Documents/GitHub/adventofcode/2022/Day 7/puzzleinput.txt', 'r') as file:
-#     line = file.readlines()
-#     for item in line:
-#         item = item.strip()
-#         if item.startswith('dir'):
-#             dir_list.append(item)
-
-#     print(dir_list)      
+print("Answer to part 1:", total)
+                        
