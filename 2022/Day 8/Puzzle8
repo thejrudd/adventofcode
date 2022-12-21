@@ -1,8 +1,29 @@
-with open('/Users/justinruddick/Documents/GitHub/adventofcode/2022/Day 8/puzzleinput.txt', 'r') as file:
-    lines = [line.strip() for line in file.readlines()]
-    for value in lines:
-        print(value)
-        for height in value:
-            print(value[0])
-            
+# My first approach is going to be creating a list of the characters in each direciton of the grid. 
+# Then, I will find the maximum number in the list, and iterate through the list to see if any subsequent numbers
+# have a greater value than the maximum. If they do, I will record the location of the value in the grid, and set the value
+# of the new maximum character to that value.
 
+# I will need to keep track of several variables
+
+coordinates = []
+maximum_value = int
+char_list = []
+
+
+with open('2022\Day 8\puzzleinput.txt', 'r') as file:
+    lines = [line.strip() for line in file.readlines()]
+    # print(lines)
+    for value in lines:
+        char_list.append(list(value))
+    
+    for set in char_list:
+        big_tree = max(set)
+        # print(big_tree)
+        index = set.index(big_tree)
+        # print(index)
+        print(set[index])
+        for value in set:
+            if value == set[index]:
+                print("true")
+    # left_right_max = max(char_list)
+    # print(left_right_max)

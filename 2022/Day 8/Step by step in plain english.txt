@@ -1,0 +1,5 @@
+1. Find the maximum number in each row.
+2. Read through from left to right, starting at the position of the maximum number, and find the right-most occurrence when reading left-to-right, and the left-most occurrence when reading right-to-left.
+3. Count how many characters are remaining after the furthest respective occurrence of the maximum number.
+4. Repeat steps 1-3, but for columns, and instead of reading left and right, read up and down.
+
